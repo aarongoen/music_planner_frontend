@@ -8,15 +8,22 @@ class daysList extends Component {
         this.props.getDays();
     }
 
+// renderDays = () => {
+//         if (this.props.days) {
+//             this.props.days.map(d => (
+//             <Day day={d}  />)
+//             )}
+//     }
     render() {
         return (
             <div>
                 <h1>Days List</h1>
+                {/* {this.renderDays()} */}
                 {this.props.days.map(d => (
-                    <Day day={d} />
-                ))}
+                    <Day day={d}  />
+                    ))}
             </div>
-        )
+        )   
     }
 }
 
