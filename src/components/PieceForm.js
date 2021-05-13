@@ -17,6 +17,8 @@ class PieceForm extends Component {
 
     handleSubmit = e => {
         e.preventDefault()
+        console.log('from submit')
+
         this.props.createPiece(this.state, this.props.history)
         this.props.history.push("/days");
     }
@@ -25,7 +27,7 @@ class PieceForm extends Component {
         return (
             <div>
                 <h1>Add a piece</h1>
-                <form>
+                <form onSubmit={this.handleSubmit}>
                     <label> Title: </label>
                     <input 
                         type="text" 
@@ -44,7 +46,8 @@ class PieceForm extends Component {
                     <label> Voicing: </label>
                     <input 
                         type="text" 
-                        name="voicing"                         onChange={this.handleChange}
+                        name="voicing"                        
+                        onChange={this.handleChange}
                         value={this.state.voicing} />
                         
                     <label> Publisher: </label>
