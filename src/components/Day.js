@@ -4,9 +4,8 @@ export default function Day({day}) {
     console.log(day)
     return (
         <div>
-            {day.name}
+            <Link to={`http//:localhost:4000/days/${day.id}`}>{day.name}: {day.date_pretty}</Link>
         </div>
-        // button for expanding a page to 
 
     )
 }

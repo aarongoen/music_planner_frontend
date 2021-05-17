@@ -3,7 +3,7 @@ import React from 'react'
 export default function Piece({piece}) {
     return (
         <div>
-            {piece.name}
+            {this.state.piece.name}
         </div>
     )
 }

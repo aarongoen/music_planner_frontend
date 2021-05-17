@@ -17,10 +17,7 @@ class PieceForm extends Component {
 
     handleSubmit = e => {
         e.preventDefault()
-        console.log('from submit')
-
-        this.props.createPiece(this.state, this.props.history)
-        this.props.history.push("/days");
+        this.props.createPiece(this.state, this.props.history);
     }
     
     render() {
@@ -33,8 +30,18 @@ class PieceForm extends Component {
                         type="text" 
                         name="title"
                         onChange={this.handleChange}
-                        value={this.state.name} 
+                        value={this.state.title} 
                     /> 
+
+                    <label> Liturgical Day: </label>
+                    <select 
+                        value={this.state.value} 
+                        onChange={this.handleChange}>
+                        <option value='First Sunday of Advent'>First Sunday of Advent</option>
+                        <option value='Second Sunday of Advent'>Second Sunday of Advent</option>
+                        <option value='Third Sunday of Advent'>Third Sunday of Advent</option>
+                        <option value='Fourth Sunday of Advent'>Fourth Sunday of Advent</option>
+                    </select>
                     
                     <label> Composer (Last, First): </label>
                     <input 
