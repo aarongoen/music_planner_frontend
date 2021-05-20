@@ -7,11 +7,11 @@ export const getDays = () => {
     };
 };
 
-export const showDay = () => {
+export const showDay = (dayID) => {
     return dispatch => {
-        fetch('http://localhost:3000/days/:id')
+        fetch(`http://localhost:3000/days/${dayID}`)
         .then(res => res.json())
-        .then((data) => dispatch({type: 'FETCH_DAY_SUCCESS', payload: data})
+        .then((data) => dispatch({type: 'SHOW_DAY_SUCCESS', payload: data})
             );
     };
 };

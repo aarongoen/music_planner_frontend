@@ -1,4 +1,4 @@
-export default (state = [], action) => {
+const reducePiece = (state = [], action) => {
     switch(action.type) {
         case "CREATE_PIECE_SUCCESS":        
             return [...state, action.payload]
@@ -9,4 +9,4 @@ export default (state = [], action) => {
     }
 };
 
-
+export default reducePiece;

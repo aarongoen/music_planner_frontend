@@ -27,3 +27,12 @@ export const createPiece = (newPieceData, history) => {
     
     }
 }
+
+export const getPieces = () => {
+    return dispatch => {
+        fetch('http://localhost:3000/pieces')
+        .then(res => res.json())
+        .then((data) => dispatch({type: 'FETCH_PIECES_SUCCESS', payload: data})
+            );
+    };
+};

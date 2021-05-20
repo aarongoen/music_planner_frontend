@@ -1,10 +1,13 @@
-import logo from './logo.svg';
+// import logo from './logo.svg';
+import React from 'react';
 import './App.css';
-import {Switch, Route, Router, useRouteMatch} from 'react-router-dom'
-import Home from './components/Home';
-import DaysList from "./components/DaysList";
+import {Switch, Route, BrowserRouter as Router, withRouter} from 'react-router-dom'
+import { connect } from 'react-redux'
+import { getDays } from './redux/actions/dayActions';
+
 import PieceForm from "./components/PieceForm";
 import DayShow from './components/DayShow';
+import DaysPage from './components/DaysPage'
 
 // / - Home (Dashboard)
 // /days - list of days
@@ -13,18 +16,41 @@ import DayShow from './components/DayShow';
 // /piece/api
 
 
-function App() {
-  
+class App extends React.Component {
+  componentDidMount() {
+    this.props.getDays();
+  }
+//  useEffect(() => {
 
-  return <div> 
-    <Switch>
-      <Route exact path='/' component={Home} />
-      <Route exact path='/days' component={DaysList} />
-      <Route exact path='/piece/new' component={PieceForm} />
-      <Route exact path='/days/:id' component={DayShow} />
-      <Route path={`${match.path}/:id`}></Route>
-    </Switch>
-  </div>;
+//  })
+
+// renderDays = (routerProps) => {
+//   return <DaysPage {...routerProps} days={this.props.days} />
+// }
+
+  render() {
+    // let { match } = this.props
+    return (
+      <Router>
+    <div div className="App" > 
+      <Switch>
+        <Route exact path='/' render={() => <div>Welcome to Music Planner</div>} />
+        <Route exact path='/days' component={DaysPage} />
+        <Route exact path='/piece/new' component={PieceForm} />
+        <Route path='/days/:dayId' render={routerProps => {
+          return <DayShow {...routerProps} days={this.props.days}  />}} />
+      </Switch>
+    </div>
+    </Router>
+    );
+  }
 }
 
-export default App;
+const mapStateToProps = state => {
+  return {
+    days: state.days,
+    pieces: state.pieces
+  }
+}
+
+export default withRouter(connect(mapStateToProps, { getDays })(App));

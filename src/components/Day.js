@@ -1,11 +1,14 @@
-import React from 'react'
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-export default function Day({day}) {
+ function Day({day}) {
     console.log(day)
     return (
         <div>
-            <Link to={`http//:localhost:4000/days/${day.id}`}>{day.name}: {day.date_pretty}</Link>
+            <h2><Link to={`/days/${day.id}`}>{day.name}: {day.date_pretty}</Link></h2>
         </div>
 
     )
-}
+};
+
+export default Day;

@@ -1,9 +1,14 @@
-import React from 'react'
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-export default function Piece({piece}) {
+ function Piece({piece}) {
+    console.log(piece)
     return (
         <div>
-            {this.state.piece.name}
+            <h2><Link to={`/pieces/${piece.id}`}>{piece.title}: {piece.composer}</Link></h2>
         </div>
+
     )
-}
+};piece
+
+export default Piece;
