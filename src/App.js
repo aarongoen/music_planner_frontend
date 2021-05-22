@@ -36,7 +36,9 @@ class App extends React.Component {
       <Switch>
         <Route exact path='/' render={() => <div>Welcome to Music Planner</div>} />
         <Route exact path='/days' component={DaysPage} />
-        <Route exact path='/piece/new' component={PieceForm} />
+        <Route path='/piece/new' render={routerProps => {
+          return <PieceForm {...routerProps} day={this.props.day} />}} />
+          {/* <Route path='/movies/:id/reviews/new' render = {(routerProps) => <ReviewForm {...routerProps} movies={this.props.movies} />} /> */}
         <Route path='/days/:dayId' render={routerProps => {
           return <DayShow {...routerProps} days={this.props.days}  />}} />
       </Switch>

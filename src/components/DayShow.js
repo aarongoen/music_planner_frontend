@@ -1,65 +1,53 @@
 import React from 'react';
+import PieceForm from './PieceForm';
 import PiecesList from './PiecesList';
+import { Component } from 'react'
+import { connect } from 'react-redux'
+import { render } from '@testing-library/react';
 
-// import React, { Component } from 'react'
-// import { connect } from 'react-redux'
+class DayShow extends Component {
 
-    
-// class DayShow extends Component {
+// let { days, history } = this.state
+// console.log(days)
+// console.log(history)
 
-//      render() {
-//         const dayId = match.params.dayId
-//         const parseDayID = this.props.location.pathname.split('/');
-//         console.log(parseDayID[2])
+// let { dayId } = props.match.params
+// console.log(dayId)
 
-//         return days.filter(day => day.id === dayId);
-//     }
+// let day = days.find(day => day.id == dayId)
+// console.log(day)
 
-//         // const showDay = this.dayDetails();
-
-//         return (
-//             <div>
-//                     {showDay.name}
-//                     {showDay.date_pretty}
-//                     {showDay.date_pretty}
-//                     {showDay.year}
-//                     {showDay.first_reading}
-//                     {showDay.psalm_or_canticle}
-//                     {showDay.gospel}
-//                     {showDay.pieces.map(p => p.name)}
-//                     {showDay.date_pretty}
-//             </div>
-//         )
-//     }
+// let { pieces } = day
+// console.log(pieces)
 
 
 
+    render() {
+      let dayDetails = [
+        <h3>{ day.name }</h3>,
+        <h3>{ day?.date_pretty }</h3>,
 
+        <p><label>Liturgical Year:</label> { day?.year }</p>,
+        <p>First Reading: { day?.first_reading } </p>,
+        <p>Psalm or Canticle: { day?.psalm_or_canticle }</p>,
+        <p>Gospel: { day?.gospel }</p>]
+        
+        return (  
+        <>
+            {dayDetails}
+            <PiecesList pieces={pieces} />
+            <PieceForm day={day} handleSubmit={handleSubmit} />
+        </>
+        );
+    }
 
-const DayShow = ({match, days}) => {
+    const mapStateToProps = (state) => {
+        return {
+        days: state.days
+        }
+    }
 
-let day = days[match.params.dayId]
-
-    return (  
- 
-      <div>
-        <h3>{ day?.name }</h3>
-        { day?.date_pretty }
-        <h3>Liturgical Year:</h3> { day?.year }
-        <h3>First Reading:</h3> { day?.first_reading } 
-        <h3>Psalm or Canticle:</h3> { day?.psalm_or_canticle }
-        <h3>Gospel:</h3>{ day?.gospel }
-        <h3>Pieces:</h3> 
-        <PiecesList pieces={day?.pieces} />
-      </div>
-    );
-  }
-
-//   const mapStateToProps = state => {
-//     return {
-//       days: state.days
-//     }
-// }
+}
 //   export default connect(mapStateToProps)(DayShow)
 
   export default DayShow; 

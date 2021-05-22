@@ -4,6 +4,7 @@ import React from 'react';
 // import { connect } from 'react-redux'
 // import Day from './Day'
 import { Link } from 'react-router-dom';
+<h4>Pieces: </h4>
 
 const PiecesList = ({ pieces }) => {
     return Object.keys(pieces).map(pieceId =>

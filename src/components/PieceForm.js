@@ -1,80 +1,85 @@
 import React, { Component } from 'react'
 import { createPiece } from '../redux/actions/pieceActions'
 import { connect } from 'react-redux'
+import { render } from '@testing-library/react';
 
 class PieceForm extends Component {
-    state = {
-        title: '',
-        composer: '', 
-        voicing: '',
-        publisher: '',
-        collection: ''
-    }
+//  console.log(props)
 
     handleChange = e => {
         this.setState({ [e.target.name]: e.target.value });
+        console.log(this.state)
     };
 
-    handleSubmit = e => {
-        e.preventDefault()
-        this.props.createPiece(this.state, this.props.history);
-    }
-    
-    render() {
+    // handleSubmit = e => {
+    //     e.preventDefault()
+    //     console.log(this.state)
+    //     this.props.createPiece(this.state, this.state.dayId);
+    // }
+render() {
+   
+
         return (
             <div>
-                <h1>Add a piece</h1>
-                <form onSubmit={this.handleSubmit}>
-                    <label> Title: </label>
+                <h3>Add a piece</h3>
+                <form onSubmit={(e) => this.props.handleSubmit({ piece: e.target.value})}>
+                    <p><label> Title: </label>
                     <input 
                         type="text" 
                         name="title"
                         onChange={this.handleChange}
                         value={this.state.title} 
-                    /> 
+                    /> </p>
 
-                    <label> Liturgical Day: </label>
-                    <select 
-                        value={this.state.value} 
-                        onChange={this.handleChange}>
-                        <option value='First Sunday of Advent'>First Sunday of Advent</option>
-                        <option value='Second Sunday of Advent'>Second Sunday of Advent</option>
-                        <option value='Third Sunday of Advent'>Third Sunday of Advent</option>
-                        <option value='Fourth Sunday of Advent'>Fourth Sunday of Advent</option>
-                    </select>
-                    
-                    <label> Composer (Last, First): </label>
+                    <p><label> Liturgical Day: </label>
+                        <div 
+                            type="text"
+                            name="day"
+                            value={this.props.day.name} 
+                    /></p>
+                 
+                    <p><label> Composer (Last, First): </label>
                     <input 
                         type="text" 
                         name="composer" 
                         onChange={this.handleChange}
-                        value={this.state.composer} />
+                        value={this.props.composer} />
+                        </p>
                     
-                    <label> Voicing: </label>
+                    <p><label> Voicing: </label>
                     <input 
                         type="text" 
                         name="voicing"                        
                         onChange={this.handleChange}
-                        value={this.state.voicing} />
+                        value={this.props.voicing} />
+                        </p>
                         
-                    <label> Publisher: </label>
+                    <p><label> Publisher: </label>
                     <input 
                         type="text" 
                         name="publisher" 
                         onChange={this.handleChange}
-                        value={this.state.publisher} />
+                        value={this.props.publisher} />
+                        </p>
                         
-                    <label> Collection: </label>
+                    <p><label> Collection: </label>
                     <input 
                         type="text" 
                         name="collection" 
                         onChange={this.handleChange}
-                        value={this.state.collection}
+                        value={this.props.collection}
                      />
-                     <button type="submit"> Add </button>
+                     </p>
+                     <button onClick={this.handleSubmit} type="submit"> Add </button>
                 </form>
             </div>
         )
     }
 }
+    const mapStateToProps = (state) => {
+        return {
+          days: state.days
+        }
+    }
+
 export default connect(null, { createPiece })(PieceForm);
