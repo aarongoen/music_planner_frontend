@@ -1,48 +1,85 @@
 import React, { Component } from 'react';
-import { Switch, Route } from 'react-router-dom';
-import { withRouter } from 'react-router-dom';
+// import React from 'react';
+import { Route, Switch } from  'react-router-dom';
+import { connect } from 'react-redux';
+
+
+import { getDays, showDay } from '../redux/actions/dayActions.js';
+
+import Welcome from '../components/Welcome';
+import DayShow from '../components/DayShow';
+import DaysList from '../components/DaysList';
+
+import PieceShow from '../components/PieceShow';
 import PieceForm from '../components/PieceForm';
-import DaysPage from '../components/DaysPage';
-import Summary from '../components/display/Summary';
-import EventDisplay from '../components/display/EventDisplay';
+
+// import { render } from '@testing-library/react';
 
 class DisplayContainer extends Component {
-    render() {
+
+    renderDay = (routerProps) => {
+        console.log(routerProps)
+
+        const dayId = parseInt(routerProps.match.params.id)
+        console.log(dayId)
+
+        let { days } = this.props
+        console.log(days)
+
+        let day = this.props.days.find (day => day.id === dayId)
+        console.log(day)
+
+        console.log(this.props)
+
+        return <DayShow {...routerProps} day={day} days={days} pieces={this.props.pieces} dayId={dayId} />
+    }
+
+    // renderPiece = (routerProps) => {
+    //     console.log(routerProps)
+
+    //     const dayId = parseInt(routerProps.match.params.id)
+    //     console.log(dayId)
+
+    //     let { days } = this.props
+    //     console.log(days)
+
+    //     let day = this.props.days.find (day => day.id === dayId)
+    //     console.log(day)
+
+    //     console.log(this.props)
+
+    //     return <PieceShow {...routerProps} days={days} pieces={this.props.pieces} dayId={dayId} />
+    // }
+
+        render() {
+     
+
         return (
             <div>
-                <h3>Hello from Container</h3>
-                <Switch>
-                    <Route path={`${this.props.url}/days/:dayId`} render={(routerProps) => 
-                    <DayShow {...routerProps} name={this.props.name} date_pretty={this.props.date_pretty} />} />
+               Hello from DisplayContainer
+               <Switch>
+                    <Route path='/welcome' component={Welcome} />
+                    <Route path='/days/:id' render={this.renderDay} />
+                    <Route path='/days' render = {(routerProps) => {
+                        return <DaysList {...routerProps} days={this.props.days} />}} />
+                 
+                    <Route path='/days/:dayId/pieces/:pieceId' render={()=> console.log("hitting the nested route")}
 
-                    {/* working */}
-                    {/* <Route path={`${this.props.url}/calendar`} render={() => <Summary categories={this.props.categories} user={this.props.user} />} /> */}
+                    />
+                    <Route path='/days/:id/pieces/new' render={routerProps => {
+                        return <PieceForm {...routerProps} day={this.props.days} />}} />
+               </Switch>
+            </div>  
+            )
+        }
 
-                    {/* working */}
-                    {/* <Route path={`${this.props.url}/photos/:eventId`} render={(routerProps) => <EventDisplay {...routerProps} categories={this.props.categories} events={this.props.events} token={this.props.token} user={this.props.user} />} /> */}
+}
 
-
-                    {/* <Route path={`${this.props.url}/map/:eventId`} render={(routerProps) => <EventDisplay {...routerProps} categories={this.props.categories} events={this.props.events} token={this.props.token} user={this.props.user} />} /> */}
-
-                    {/* working */}
-                    {/* <Route path={`${this.props.url}/map`} render={() => <Summary categories={this.props.categories} user={this.props.user} />} /> */}
-
-                    {/* working */}
-                    {/* <Route path={`${this.props.url}/newentry`} render={() => <Form categories={this.props.categories} history={this.props.history} token={this.props.token} user={this.props.user} />} /> */}
-
-                    {/* <Route path={`${this.props.url}/:categoryId/:eventId`} render={(routerProps) => <EventDisplay {...routerProps} categories={this.props.categories} events={this.props.events} token={this.props.token} user={this.props.user} />} /> */}
-
-                    {/* working */}
-                    {/* <Route path={`${this.props.url}/:categoryId`} render={(routerProps) => <CategorySummary {...routerProps} categories={this.props.categories} events={this.props.events} token={this.props.token} user={this.props.user} />} /> */}
-
-                    {/* working  */}
-                    {/* <Route exact path={this.props.url} render={() => <Summary categories={this.props.categories} user={this.props.user} />} /> */}
-
-                    {/* <Route render={() => <Summary categories={this.props.categories} user={this.props.user} />} /> */}
-                </Switch>
-            </div>
-        )
+const mapStateToProps = state => {
+    return {
+        days: state.days,
+        pieces: state.days.pieces
     }
 }
 
-export default withRouter(DisplayContainer);
+export default connect(mapStateToProps, { getDays, showDay })(DisplayContainer);

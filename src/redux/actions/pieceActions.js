@@ -1,7 +1,7 @@
-export const createPiece = (newPieceData, dayId) => {
-    // console.log('from the pieceForm')
+export const createPiece = (newPieceData, dayId, history) => {
+    console.log('createPiece action called')
     return (dispatch) => {
-        fetch(`http://localhost:3000/days/${dayId}`, {
+        fetch(`http://localhost:3000/days/${dayId}/pieces/new`, {
             method: 'POST',
             headers: {
                 Accepts: 'application/json',
@@ -21,8 +21,8 @@ export const createPiece = (newPieceData, dayId) => {
             (data) => {
                 console.log(data)
             dispatch({type: 'CREATE_PIECE_SUCCESS', payload: data})
-            }
-            // history.push("/days")
+            history.push(`/days/${dayId}/pieces`)
+}
         )
         .catch((err) => console.log(err))
     
@@ -37,3 +37,14 @@ export const getPieces = () => {
             );
     };
 };
+
+export const getPiece = (dayId, pieceId) => {
+    return dispatch => {
+        fetch(`http://localhost:3000/days/${dayId}/pieces/${pieceId}`)
+            .then(res => res.json())
+            .then((data) => dispatch({type: 'SHOW_PIECE_SUCCESS', payload: data})
+            );
+    };
+};
+
+

@@ -3,15 +3,17 @@ const reducePiece = (state = [], action) => {
         case "CREATE_PIECE_SUCCESS":    
         console.log({pieces: state.pieces.concat(action.payload.text) })    
             return {...state, 
-                pieces: [...state.pieces, 
+                piece: 
                 //     {
                 // id: newPiece(state.piece),
                 // text: 
                 action.payload,
-                ]
+
             }
         case "FETCH_PIECES_SUCCESS":
             return action.payload
+        case "GET_PIECE_SUCCESS":
+            return
         default:
             return state;
     }

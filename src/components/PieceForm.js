@@ -1,48 +1,64 @@
 import React, { Component } from 'react'
 import { createPiece } from '../redux/actions/pieceActions'
 import { connect } from 'react-redux'
-import { render } from '@testing-library/react';
-
+import DayShow from './DayShow'
 class PieceForm extends Component {
-//  console.log(props)
 
-    handleChange = e => {
-        this.setState({ [e.target.name]: e.target.value });
-        console.log(this.state)
-    };
+    state = {
+        title,
+        composer: '',
+        voicing: '',
+        publisher: '',
+        collection: ''  
+    }
+        
+onSubmit(e) {
+    e.preventDefault()
+    console.log(this.state)
+    
+    const piece = {
+        title: this.state.title,
+        composer: this.state.composer,
+        voicing: this.state.voicing,
+        publisher: this.state.publisher,
+        collection: this.state.collection
+    }; 
 
-    // handleSubmit = e => {
-    //     e.preventDefault()
-    //     console.log(this.state)
-    //     this.props.createPiece(this.state, this.state.dayId);
-    // }
+    let day = this.props.day
+    console.log(day)
+    this.props.dispatch({type: 'CREATE_PIECE_SUCCESS', piece: this.state})
+};
+
+
+onChange(e) {
+    this.setState({ [e.target.name]: e.target.value });
+    console.log(this.state)
+};
+
 render() {
-   
-
         return (
             <div>
                 <h3>Add a piece</h3>
-                <form onSubmit={(e) => this.props.handleSubmit({ piece: e.target.value})}>
+                <form onSubmit={this.onSubmit}>
                     <p><label> Title: </label>
                     <input 
                         type="text" 
                         name="title"
-                        onChange={this.handleChange}
+                        onChange={this.onChange}
                         value={this.state.title} 
                     /> </p>
 
-                    <p><label> Liturgical Day: </label>
-                        <div 
-                            type="text"
-                            name="day"
-                            value={this.props.day.name} 
-                    /></p>
+                    <div 
+                        type="text"
+                        name="day"
+                        value={this.props.day.name} 
+                    />
                  
                     <p><label> Composer (Last, First): </label>
                     <input 
                         type="text" 
                         name="composer" 
-                        onChange={this.handleChange}
+                        onChange={this.onChange}
                         value={this.props.composer} />
                         </p>
                     
@@ -50,7 +66,7 @@ render() {
                     <input 
                         type="text" 
                         name="voicing"                        
-                        onChange={this.handleChange}
+                        onChange={this.onChange}
                         value={this.props.voicing} />
                         </p>
                         
@@ -58,7 +74,7 @@ render() {
                     <input 
                         type="text" 
                         name="publisher" 
-                        onChange={this.handleChange}
+                        onChange={this.onChange}
                         value={this.props.publisher} />
                         </p>
                         
@@ -66,20 +82,16 @@ render() {
                     <input 
                         type="text" 
                         name="collection" 
-                        onChange={this.handleChange}
+                        onChange={this.onChange}
                         value={this.props.collection}
                      />
                      </p>
-                     <button onClick={this.handleSubmit} type="submit"> Add </button>
+                     <button onClick={this.onSubmit} type="submit"> Add </button>
                 </form>
             </div>
         )
     }
 }
-    const mapStateToProps = (state) => {
-        return {
-          days: state.days
-        }
-    }
+
 
 export default connect(null, { createPiece })(PieceForm);

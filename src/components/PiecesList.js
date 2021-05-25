@@ -6,10 +6,21 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 <h4>Pieces: </h4>
 
-const PiecesList = ({ pieces }) => {
-    return Object.keys(pieces).map(pieceId =>
-    <p key={pieceId}><Link to={`/pieces/${pieceId}`}>{pieces[pieceId].title}</Link></p>
+const PiecesList = ({ pieces, dayId }) => {
+    console.log(pieces)
+
+console.log(dayId)
+
+const renderPieces = Object.keys(pieces).map(pieceId =>
+    <p key={pieceId}><Link to={`/days/${dayId}/pieces/${pieceId}`}>{pieces[pieceId].title} -{pieces[pieceId].composer}</Link></p>
     );
+
+    return (
+        <div>
+        <h4>Recommended pieces:</h4>
+            {renderPieces}
+        </div>
+    )
 }
 
 export default PiecesList;

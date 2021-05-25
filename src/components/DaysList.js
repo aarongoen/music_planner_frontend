@@ -9,28 +9,11 @@ const DaysList = ({ days }) => {
     const renderDays = Object.keys(days).map(dayId =>
     <p key={dayId}><Link to={`/days/${dayId}`}>{days[dayId].name}</Link></p>
     );
-
-
-// export default daysList;
-
-// class daysList extends Component {
-//     componentDidMount() {
-//         this.props.getDays();
-//     }
-
-// renderDays = () => {
-//         if (this.props.days) {
-//             this.props.days.map(d => (
-//             <Day day={d}  />)
-//             )}
-    // }
-    // render() {
         return (
             <div>
                 {renderDays}
             </div>
         );   
-    // }
 }
 
 
