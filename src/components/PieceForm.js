@@ -5,14 +5,19 @@ import DayShow from './DayShow'
 class PieceForm extends Component {
 
     state = {
-        title,
+        title: '',
         composer: '',
         voicing: '',
         publisher: '',
         collection: ''  
     }
+
+    componentDidMount() {
+     const {title, composer, voicing, publisher, collections} = this.props
+        this.setState({title, composer, voicing, publisher, collections})
+    }
         
-onSubmit(e) {
+onSubmit = e => {
     e.preventDefault()
     console.log(this.state)
     
@@ -26,16 +31,21 @@ onSubmit(e) {
 
     let day = this.props.day
     console.log(day)
-    this.props.dispatch({type: 'CREATE_PIECE_SUCCESS', piece: this.state})
+    // this.props.dispatch({type: 'CREATE_PIECE_SUCCESS', piece: this.state})
+    // this.props.onSubmit(this.state)
+            this.props.createPiece();
+
 };
 
 
-onChange(e) {
+onChange = (e) => {
+    console.log(this)
     this.setState({ [e.target.name]: e.target.value });
     console.log(this.state)
 };
 
 render() {
+    console.log(this.state)
         return (
             <div>
                 <h3>Add a piece</h3>
@@ -48,11 +58,11 @@ render() {
                         value={this.state.title} 
                     /> </p>
 
-                    <div 
+                    {/* <div 
                         type="text"
                         name="day"
                         value={this.props.day.name} 
-                    />
+                    /> */}
                  
                     <p><label> Composer (Last, First): </label>
                     <input 
@@ -93,5 +103,5 @@ render() {
     }
 }
 
-
-export default connect(null, { createPiece })(PieceForm);
+export default PieceForm;
+// export default connect(null, { createPiece })(PieceForm);
