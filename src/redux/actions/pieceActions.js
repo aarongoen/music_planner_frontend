@@ -1,13 +1,16 @@
-export const createPiece = (newPieceData, dayId, history) => {
+
+export const createPiece = (piece, day_id, history) => {
     console.log('createPiece action called')
+    console.log(piece)
+    console.log(history)
     return (dispatch) => {
-        fetch(`http://localhost:3000/days/${dayId}/pieces/new`, {
+        fetch(`http://localhost:3000/days/${day_id}/pieces`, {
             method: 'POST',
             headers: {
                 Accepts: 'application/json',
                 'Content-Type': 'application/json'
             },
-        body: JSON.stringify({ piece: newPieceData }),
+        body: JSON.stringify(piece)
         })
         .then((res) => {
             console.log(res)
@@ -17,15 +20,12 @@ export const createPiece = (newPieceData, dayId, history) => {
                 throw new Error(res.statusText);
             }
         })
-        .then(
-            (data) => {
-                console.log(data)
+        .then(data => {
+            console.log(data)
             dispatch({type: 'CREATE_PIECE_SUCCESS', payload: data})
-            history.push(`/days/${dayId}/pieces`)
-}
-        )
+            // history.push(`/days/${dayId}`)
+        })
         .catch((err) => console.log(err))
-    
     }
 }
 

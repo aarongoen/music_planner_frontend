@@ -1,51 +1,64 @@
 import React, { Component } from 'react'
 import { createPiece } from '../redux/actions/pieceActions'
 import { connect } from 'react-redux'
-import DayShow from './DayShow'
+import { withRouter } from 'react-router-dom';
+// import { useSelector } from 'react-redux';
 class PieceForm extends Component {
+// const { pieceId } = match.params
 
     state = {
-        title: '',
-        composer: '',
-        voicing: '',
-        publisher: '',
-        collection: ''  
+            title: '',
+            composer: '',
+            voicing: '',
+            publisher: '',
+            collection: '',
+            day_id: '' 
     }
 
-    componentDidMount() {
-     const {title, composer, voicing, publisher, collections} = this.props
-        this.setState({title, composer, voicing, publisher, collections})
-    }
-        
-onSubmit = e => {
-    e.preventDefault()
+componentDidMount() {
+    const {title, composer, voicing, publisher, collections, day_id} = this.props
+    console.log(this.props)
+    this.setState({title, composer, voicing, publisher, collections, day_id})
     console.log(this.state)
-    
-    const piece = {
-        title: this.state.title,
-        composer: this.state.composer,
-        voicing: this.state.voicing,
-        publisher: this.state.publisher,
-        collection: this.state.collection
-    }; 
-
-    let day = this.props.day
-    console.log(day)
-    // this.props.dispatch({type: 'CREATE_PIECE_SUCCESS', piece: this.state})
-    // this.props.onSubmit(this.state)
-            this.props.createPiece();
-
-};
-
-
+}
+        
 onChange = (e) => {
-    console.log(this)
     this.setState({ [e.target.name]: e.target.value });
     console.log(this.state)
 };
 
+onSubmit = e => {
+    e.preventDefault()
+    console.log('props', this.props)
+    console.log('history', this.props.history)
+    
+    const pieceData = {
+        piece: {  
+            title: this.state.title,
+            composer: this.state.composer,
+            voicing: this.state.voicing,
+            publisher: this.state.publisher,
+            collection: this.state.collection,
+            day_id: this.props.day.id
+        }
+    }; 
+    console.log(pieceData)
+
+    // const {history} = this.props
+    // console.log(history)
+    let day_id = this.props.day.id
+    console.log(day_id)
+
+    this.props.createPiece(this.state, day_id);
+    // this.setState({ piece: ''
+    // })
+    // history.push(`/days/${dayId}`)
+};
+
 render() {
-    console.log(this.state)
+    // console.log(this.props)
+    // console.log(history)
+
         return (
             <div>
                 <h3>Add a piece</h3>
@@ -103,5 +116,5 @@ render() {
     }
 }
 
-export default PieceForm;
-// export default connect(null, { createPiece })(PieceForm);
+// export default PieceForm;
+export default connect(null, { createPiece })(PieceForm);

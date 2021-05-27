@@ -12,8 +12,8 @@ let day = days[props.match.params.id]
 // let day = props.day
 console.log(day)
 
-let pieces = day.pieces
-console.log(pieces)
+let pieces = day?.pieces
+console.log(pieces) 
 
         let dayDetails = [
         <h3>{ day.name }</h3>,
@@ -27,10 +27,12 @@ console.log(pieces)
     let dayId = day.id-1
     console.log(dayId) 
 
-    return (  
+    return ( 
+      
         <div><p>hello from dayshow</p>
 
-        { !days
+     
+        { !days && !pieces
             ? <div>Loading...</div>
             : (
             <>

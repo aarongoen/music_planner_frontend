@@ -52,7 +52,6 @@ class DisplayContainer extends Component {
     // }
 
         render() {
-     
 
         return (
             <div>
@@ -66,7 +65,7 @@ class DisplayContainer extends Component {
                     <Route path='/days/:dayId/pieces/:pieceId' render={()=> console.log("hitting the nested route")}
 
                     />
-                    <Route path='/days/:id/pieces/new' render={routerProps => {
+                    <Route path='/days/:dayId/pieces/new' render={routerProps => {
                         return <PieceForm {...routerProps} day={this.props.days} />}} />
                </Switch>
             </div>  
