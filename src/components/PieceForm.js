@@ -32,7 +32,7 @@ onSubmit = e => {
     console.log('props', this.props)
     console.log('history', this.props.history)
     
-    const pieceData = {
+    const piece = {
         piece: {  
             title: this.state.title,
             composer: this.state.composer,
@@ -42,14 +42,14 @@ onSubmit = e => {
             day_id: this.props.day.id
         }
     }; 
-    console.log(pieceData)
+    console.log(piece)
 
     // const {history} = this.props
     // console.log(history)
     let day_id = this.props.day.id
     console.log(day_id)
-
-    this.props.createPiece(this.state, day_id);
+console.log(this.state)
+    this.props.createPiece(piece, day_id);
     // this.setState({ piece: ''
     // })
     // history.push(`/days/${dayId}`)

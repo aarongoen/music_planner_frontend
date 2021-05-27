@@ -1,7 +1,7 @@
 const reducePiece = (state = [], action) => {
     switch(action.type) {
         case "CREATE_PIECE_SUCCESS": 
-        // console.log({pieces: state.pieces.concat(action.payload.text) })    
+        console.log(state)    
             return {...state, pieces: [...state.pieces, action.payload]}
         case "FETCH_PIECES_SUCCESS":
             return action.payload
