@@ -1,6 +1,8 @@
 import React from 'react';
 import PieceForm from './PieceForm';
-import PiecesList from './PiecesList';
+import PiecesListNew from './PiecesListNew';
+// import PiecesList from './PiecesList';
+import { connect } from 'react-redux';
 
 const DayShow = (props) => {
 console.log(props)
@@ -16,7 +18,7 @@ let pieces = day?.pieces
 console.log(pieces) 
 
         let dayDetails = [
-        <h3>{ day.name }</h3>,
+        <h3>{ day?.name }</h3>,
         <h3>{ day?.date_pretty }</h3>,
 
         <p><label>Liturgical Year:</label> { day?.year }</p>,
@@ -24,23 +26,20 @@ console.log(pieces)
         <p>Psalm or Canticle: { day?.psalm_or_canticle }</p>,
         <p>Gospel: { day?.gospel }</p>]
 
-    let dayId = day.id-1
-    console.log(dayId) 
+    let dayId = day?.id-1
+
 
     return ( 
-      
-        <div><p>hello from dayshow</p>
 
-     
-        { !days && !pieces
-            ? <div>Loading...</div>
-            : (
+        <div>
+        {/* <p>hello from dayshow</p> */}
+
+        {  !pieces ? <div>Loading...</div> :
             <>
-            
                 {dayDetails}
-                <PiecesList key={dayId} pieces={pieces} dayId={dayId}/>
+                <PiecesListNew pieces={pieces} dayId={dayId}/>
                 <PieceForm pieces={pieces} day={day} />
-            </> )
+            </> 
         }
         </div>
     )

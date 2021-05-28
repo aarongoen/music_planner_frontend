@@ -1,12 +1,14 @@
 import React from 'react';
 // import { Link } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
+import { PiecesListNew } from './PiecesListNew';
 
  function Piece({piece}) {
     console.log(piece)
 
     const handleClick = () => {
-        props.appHandleClick(props.piece)
+        console.log(props)
+        // props.appHandleClick(props.piece)
     }
     
     return (

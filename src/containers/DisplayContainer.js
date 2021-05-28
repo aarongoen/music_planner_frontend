@@ -10,7 +10,7 @@ import Welcome from '../components/Welcome';
 import DayShow from '../components/DayShow';
 import DaysList from '../components/DaysList';
 
-import PieceShow from '../components/PieceShow';
+import PieceShow from '../components/PiecesListItem';
 import PieceForm from '../components/PieceForm';
 
 // import { render } from '@testing-library/react';

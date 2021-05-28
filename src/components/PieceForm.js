@@ -28,7 +28,7 @@ onChange = (e) => {
 };
 
 onSubmit = e => {
-    e.preventDefault()
+    // e.preventDefault()
     console.log('props', this.props)
     console.log('history', this.props.history)
     
@@ -50,9 +50,9 @@ onSubmit = e => {
     console.log(day_id)
 console.log(this.state)
     this.props.createPiece(piece, day_id);
-    // this.setState({ piece: ''
-    // })
-    // history.push(`/days/${dayId}`)
+    this.setState({ piece: ''
+        })
+    // history.push(`/days/${day_Id}`)
 };
 
 render() {

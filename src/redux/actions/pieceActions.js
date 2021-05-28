@@ -16,6 +16,7 @@ export const createPiece = (piece, day_id, history) => {
             console.log(res)
             if (res.ok) {
                 return res.json();
+                // console.log(res)
             } else {
                 throw new Error(res.statusText);
             }
