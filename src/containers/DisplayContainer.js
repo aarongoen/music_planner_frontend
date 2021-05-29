@@ -10,7 +10,6 @@ import Welcome from '../components/Welcome';
 import DayShow from '../components/DayShow';
 import DaysList from '../components/DaysList';
 
-import PieceShow from '../components/PiecesListItem';
 import PieceForm from '../components/PieceForm';
 
 // import { render } from '@testing-library/react';
@@ -57,9 +56,9 @@ class DisplayContainer extends Component {
             <div>
                Hello from DisplayContainer
                <Switch>
-                    <Route path='/welcome' component={Welcome} />
+                    <Route exact path='/' component={Welcome} />
                     <Route path='/days/:id' render={this.renderDay} />
-                    <Route path='/days' render = {(routerProps) => {
+                    <Route exact path='/days' render = {(routerProps) => {
                         return <DaysList {...routerProps} days={this.props.days} />}} />
                  
                     <Route path='/days/:dayId/pieces/:pieceId' render={()=> console.log("hitting the nested route")}

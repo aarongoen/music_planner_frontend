@@ -7,19 +7,10 @@ import { getDays } from './redux/actions/dayActions';
 import DaysContainer from './containers/DisplayContainer'
 
 const App = props => {
-  // componentDidMount() {
-  //   this.props.getDays();
-  // }
+
 //  useEffect(() => {
 
 //  })
-
-// renderDays = (routerProps) => {
-//   return <DaysPage {...routerProps} days={this.props.days} />
-// }
-
-  // render() {
-    // let { match } = this.props
 
     props.getDays()
 
