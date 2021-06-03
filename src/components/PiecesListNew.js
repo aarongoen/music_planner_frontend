@@ -5,34 +5,20 @@
 // import Day from './Day'
 import { Link } from 'react-router-dom';
 import PiecesListItem from './PiecesListItem';
-// class PiecesListNew extends Component {
- 
-//     render () {
-//       return (
-//         <div>  
-//         <h4>Recommended pieces:</h4>
-//             {pieces.map(piece => ( 
-//                 <div> 
-//                     <li>{piece.title}: {piece.composer}
-//                         <PiecesListItem key={piece.id} piece={piece}/>
-//                     </li>
-//                 </div>
-//             ))}
-        
-//         </div>
-//       )
-//     }
-//   }
 
-const PiecesListNew = ({pieces}) => {
-
-    return (
-        <>
+const PiecesListNew = (props) => {
+// debugger
+    return(   
+    <>
         <div>   
         <h4>Recommended pieces:</h4>
-        {console.log(pieces)}
+        {/* {console.log(pieces)} */}
+        {console.log(props)}
             <ul>  
-                {pieces.map(piece => <PiecesListItem key={piece.id} piece={piece}/>)}
+              {props.pieces.length > 0 && 
+                props.pieces.map(piece => {
+                    return <PiecesListItem key={piece.id} piece={piece}/>})
+                }
             </ul>
         </div>
         </>

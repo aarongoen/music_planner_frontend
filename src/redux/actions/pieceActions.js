@@ -1,8 +1,8 @@
 
-export const createPiece = (piece, day_id, history) => {
+export const createPiece = (piece, day_id) => {
+//    debugger 
     console.log('createPiece action called')
     console.log(piece)
-    console.log(history)
     return (dispatch) => {
         fetch(`http://localhost:3000/days/${day_id}/pieces`, {
             method: 'POST',
@@ -23,12 +23,14 @@ export const createPiece = (piece, day_id, history) => {
         })
         .then(data => {
             console.log(data)
-            dispatch({type: 'CREATE_PIECE_SUCCESS', payload: data})
-            // history.push(`/days/${dayId}`)
+            dispatch({type: 'ADD_PIECE', payload: data})
+            // history.push(`/days/${day_id}`)
         })
         .catch((err) => console.log(err))
     }
 }
+    
+
 
 export const getPieces = () => {
     return dispatch => {
@@ -47,5 +49,7 @@ export const getPiece = (dayId, pieceId) => {
             );
     };
 };
+
+// // export const 
 
 

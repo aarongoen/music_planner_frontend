@@ -1,4 +1,5 @@
 export const getDays = () => {
+    // debugger
     return dispatch => {
         fetch('http://localhost:3000/days')
         .then(res => res.json())
@@ -15,6 +16,8 @@ export const showDay = (dayID) => {
             );
     };
 };
+
+
 
 
 

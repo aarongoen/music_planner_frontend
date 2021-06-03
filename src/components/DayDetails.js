@@ -4,7 +4,7 @@ import React from 'react'
     return (
         
         <div>
-        hello from DayDetails
+        {/* hello from DayDetails */}
             <div className="details" >
                     <h3>{ day?.name }</h3>
                     <h3>{ day?.date_pretty }</h3>

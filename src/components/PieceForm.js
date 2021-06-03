@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { createPiece } from '../redux/actions/pieceActions'
+// import { createPiece } from '../redux/actions/dayActions'
 import { connect } from 'react-redux'
-import { withRouter } from 'react-router-dom';
+// import { withRouter } from 'react-router-dom';
 // import { useSelector } from 'react-redux';
 class PieceForm extends Component {
 // const { pieceId } = match.params
@@ -28,7 +29,7 @@ onChange = (e) => {
 };
 
 onSubmit = e => {
-    // e.preventDefault()
+    e.preventDefault()
     console.log('props', this.props)
     console.log('history', this.props.history)
     
@@ -42,17 +43,17 @@ onSubmit = e => {
             day_id: this.props.day.id
         }
     }; 
-    console.log(piece)
 
-    // const {history} = this.props
-    // console.log(history)
     let day_id = this.props.day.id
     console.log(day_id)
-console.log(this.state)
+
     this.props.createPiece(piece, day_id);
-    this.setState({ piece: ''
-        })
-    // history.push(`/days/${day_Id}`)
+    
+    this.title.value = "";
+    this.composer.value = "";
+    this.voicing.value = "";
+    this.publisher.value = "";
+    this.collection.value = "";
 };
 
 render() {
@@ -68,21 +69,23 @@ render() {
                         type="text" 
                         name="title"
                         onChange={this.onChange}
-                        value={this.state.title} 
+                        // value={this.state.title} 
+                        ref={(el) => (this.title = el)}
                     /> </p>
 
-                    {/* <div 
-                        type="text"
-                        name="day"
-                        value={this.props.day.name} 
-                    /> */}
-                 
+                    <div>  
+                        <label>Day: </label>
+                        {this.props.day.name} 
+                    </div>
+       
                     <p><label> Composer (Last, First): </label>
                     <input 
                         type="text" 
                         name="composer" 
                         onChange={this.onChange}
-                        value={this.props.composer} />
+                        // value={this.props.composer}
+                        ref={(el) => (this.composer = el)}
+ />
                         </p>
                     
                     <p><label> Voicing: </label>
@@ -90,7 +93,9 @@ render() {
                         type="text" 
                         name="voicing"                        
                         onChange={this.onChange}
-                        value={this.props.voicing} />
+                        // value={this.props.voicing}
+                        ref={(el) => (this.voicing = el)}
+ />
                         </p>
                         
                     <p><label> Publisher: </label>
@@ -98,7 +103,9 @@ render() {
                         type="text" 
                         name="publisher" 
                         onChange={this.onChange}
-                        value={this.props.publisher} />
+                        // value={this.props.publisher}
+                        ref={(el) => (this.publisher = el)}
+ />
                         </p>
                         
                     <p><label> Collection: </label>
@@ -106,7 +113,8 @@ render() {
                         type="text" 
                         name="collection" 
                         onChange={this.onChange}
-                        value={this.props.collection}
+                        // value={this.props.collection}
+                        ref={(el) => (this.collection = el)}
                      />
                      </p>
                      <button onClick={this.onSubmit} type="submit"> Add </button>

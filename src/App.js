@@ -1,31 +1,35 @@
 // import logo from './logo.svg';
-import React from 'react';
+import { Component } from 'react';
+// import React from 'react';
 import './App.css';
 import { connect } from 'react-redux'
 import { getDays } from './redux/actions/dayActions';
 
-import DaysContainer from './containers/DisplayContainer'
+import DisplayContainer from './containers/DisplayContainer'
 
-const App = props => {
+class App extends Component {
 
 //  useEffect(() => {
 
 //  })
 
-    props.getDays()
 
-    return (
+
+    // props.getDays()
+render() {
+
+// console.log(this.props)
+
+return (
     <div className="App" > 
-      <DaysContainer />
+      <DisplayContainer />
     </div>
     );
   }
-
-
-const mapStateToProps = state => {
-  return {
-    days: state.days,
-  }
 }
+    
 
-export default connect(null, { getDays })(App);
+
+
+// export default connect(null, { getDays })(App);
+export default App;

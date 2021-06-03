@@ -5,8 +5,16 @@ import './index.css';
 
 import { Provider } from 'react-redux';
 import {BrowserRouter as Router} from 'react-router-dom';
+// import { Router } from 'react-router'
+// import createBrowserHistory from 'history/createBrowserHistory'
+
+
 import store from './redux/store';
 import reportWebVitals from './reportWebVitals';
+
+// export const history = createBrowserHistory()
+
+
 
 ReactDOM.render(
   <React.StrictMode>
