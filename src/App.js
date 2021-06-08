@@ -6,26 +6,15 @@ import { connect } from 'react-redux'
 import { getDays } from './redux/actions/dayActions';
 
 import DisplayContainer from './containers/DisplayContainer'
-
 class App extends Component {
 
-//  useEffect(() => {
-
-//  })
-
-
-
-    // props.getDays()
 render() {
-
-// console.log(this.props)
-
-return (
-    <div className="App" > 
-      <DisplayContainer />
-    </div>
-    );
-  }
+  return (
+      <div className="App" > 
+        <DisplayContainer />
+      </div>
+      );
+    }
 }
     
 

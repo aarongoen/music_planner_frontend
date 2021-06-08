@@ -17,24 +17,23 @@ class PieceForm extends Component {
     }
 
 componentDidMount() {
-    const {title, composer, voicing, publisher, collections, day_id} = this.props
-    console.log(this.props)
-    this.setState({title, composer, voicing, publisher, collections, day_id})
-    console.log(this.state)
+    const {title, composer, voicing, publisher, collection, day_id} = this.props
+    // console.log(this.props)
+    this.setState({title, composer, voicing, publisher, collection, day_id})
+    // console.log(this.state)
 }
         
 onChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
-    console.log(this.state)
+    // console.log(this.state)
 };
 
 onSubmit = e => {
     e.preventDefault()
-    console.log('props', this.props)
-    console.log('history', this.props.history)
+    // console.log('props', this.props)
+    // console.log('history', this.props.history)
     
     const piece = {
-        piece: {  
             title: this.state.title,
             composer: this.state.composer,
             voicing: this.state.voicing,
@@ -42,24 +41,26 @@ onSubmit = e => {
             collection: this.state.collection,
             day_id: this.props.day.id
         }
-    }; 
 
-    let day_id = this.props.day.id
-    console.log(day_id)
+    console.log('this is the piece', piece)
+// console.log(this.state)
 
-    this.props.createPiece(piece, day_id);
+// this.props.createPiece(piece, day_id);
+    this.props.createPiece(piece, piece.day_id);
+
+    this.setState({piece:''})
+    // this.props.history.push(`/days/${day_id}`)
+
     
-    this.title.value = "";
-    this.composer.value = "";
-    this.voicing.value = "";
-    this.publisher.value = "";
-    this.collection.value = "";
+    // console.log(props)
+    // this.title.value = "";
+    // this.composer.value = "";
+    // this.voicing.value = "";
+    // this.publisher.value = "";
+    // this.collection.value = "";
 };
 
 render() {
-    // console.log(this.props)
-    // console.log(history)
-
         return (
             <div>
                 <h3>Add a piece</h3>
@@ -69,8 +70,8 @@ render() {
                         type="text" 
                         name="title"
                         onChange={this.onChange}
-                        // value={this.state.title} 
-                        ref={(el) => (this.title = el)}
+                        value={this.state.title} 
+                        // ref={(el) => (this.title = el)}
                     /> </p>
 
                     <div>  
@@ -83,8 +84,8 @@ render() {
                         type="text" 
                         name="composer" 
                         onChange={this.onChange}
-                        // value={this.props.composer}
-                        ref={(el) => (this.composer = el)}
+                        value={this.props.composer}
+                        // ref={(el) => (this.composer = el)}
  />
                         </p>
                     
@@ -93,8 +94,8 @@ render() {
                         type="text" 
                         name="voicing"                        
                         onChange={this.onChange}
-                        // value={this.props.voicing}
-                        ref={(el) => (this.voicing = el)}
+                        value={this.props.voicing}
+                        // ref={(el) => (this.voicing = el)}
  />
                         </p>
                         
@@ -103,8 +104,8 @@ render() {
                         type="text" 
                         name="publisher" 
                         onChange={this.onChange}
-                        // value={this.props.publisher}
-                        ref={(el) => (this.publisher = el)}
+                        value={this.props.publisher}
+                        // ref={(el) => (this.publisher = el)}
  />
                         </p>
                         
@@ -113,8 +114,8 @@ render() {
                         type="text" 
                         name="collection" 
                         onChange={this.onChange}
-                        // value={this.props.collection}
-                        ref={(el) => (this.collection = el)}
+                        value={this.props.collection}
+                        // ref={(el) => (this.collection = el)}
                      />
                      </p>
                      <button onClick={this.onSubmit} type="submit"> Add </button>

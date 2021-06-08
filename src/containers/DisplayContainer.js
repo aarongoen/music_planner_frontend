@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 // import React from 'react';
-import { Route, Switch } from  'react-router-dom';
+import { Route, Switch, Link} from  'react-router-dom';
 import { connect } from 'react-redux';
 
 
 import { getDays, showDay } from '../redux/actions/dayActions.js';
-import { createPiece } from '../redux/actions/pieceActions.js';
+import { createPiece, getPieces } from '../redux/actions/pieceActions.js';
 
 import Welcome from '../components/Welcome';
 import DayShow from '../components/DayShow';
@@ -20,6 +20,7 @@ class DisplayContainer extends Component {
 
     componentDidMount() {
         this.props.getDays()
+        // this.props.getPieces()
       }
 
     // renderPiece = (routerProps) => {
@@ -44,6 +45,20 @@ class DisplayContainer extends Component {
         return (
             <div>
                {/* Hello from DisplayContainer */}
+              <nav>
+                  <ul>
+                      <li>
+                          <Link to="/">Home</Link>
+                      </li>
+                      <li>
+                          <Link to="/days">Days</Link>
+                      </li>
+                      {/* <li>
+                          <Link to="/users">Users</Link>
+                      </li> */}
+                  </ul>
+              </nav>
+
                <Switch>
                     <Route exact path='/' component={Welcome} />
                     <Route path='/days/:id' render={(routerProps) => {
@@ -64,10 +79,10 @@ class DisplayContainer extends Component {
 const mapStateToProps = state => {
     console.log(state)
     return {
-        days: state.days,
-        pieces: state.pieces
+        days: state.days
     }
 }
+
 
 const mapDispatchToProps = dispatch => {
     return {
@@ -80,6 +95,10 @@ const mapDispatchToProps = dispatch => {
       createPiece: () => {
         dispatch(createPiece())
       },
+      getPieces: () => {
+        dispatch(getPieces())
+      },
+
     };
   };
 

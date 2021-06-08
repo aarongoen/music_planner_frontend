@@ -1,11 +1,11 @@
 import {createStore, combineReducers, compose, applyMiddleware} from 'redux';
-import pieceReducer from './reducers/pieceReducer';
+import pieces from './reducers/pieceReducer';
 import thunk from 'redux-thunk';
-import dayReducer from './reducers/dayReducer';
+import days from './reducers/dayReducer';
 
 const rootReducer = combineReducers({
-    pieces: pieceReducer,
-    days: dayReducer
+    pieces,
+    days
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

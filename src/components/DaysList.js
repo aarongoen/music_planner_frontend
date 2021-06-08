@@ -14,13 +14,20 @@ const DaysList = ( props ) => {
         return (
             <div>
             <h1>Sundays of Advent</h1>
-            <p>Select a Sunday to begin planning.</p>
+            <p>Select a day to begin planning.</p>
                 {renderDays}
             </div>
         );   
 }
 
+// const mapStateToProps = state => {
+//     console.log(state)
+//     return {
+//         days: state.days
+//     }
+// }
 
-// export default connect(mapStateToProps, { getDays })(daysList)
+
+// export default connect(mapStateToProps, { getDays })(DaysList)
 
 export default DaysList;

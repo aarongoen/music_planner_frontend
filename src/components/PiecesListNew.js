@@ -13,7 +13,7 @@ const PiecesListNew = (props) => {
         <div>   
         <h4>Recommended pieces:</h4>
         {/* {console.log(pieces)} */}
-        {console.log(props)}
+        {/* {console.log(props)} */}
             <ul>  
               {props.pieces.length > 0 && 
                 props.pieces.map(piece => {
