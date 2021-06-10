@@ -1,4 +1,4 @@
-import React, { Component, Suspense, lazy } from 'react';
+import React, { Component } from 'react';
 // import React from 'react';
 import { Route, Switch, Link} from  'react-router-dom';
 import { connect } from 'react-redux';
@@ -8,15 +8,11 @@ import { getDays, showDay } from '../redux/actions/dayActions.js';
 import { createPiece, getPieces } from '../redux/actions/pieceActions.js';
 
 import Welcome from '../components/Welcome';
-// import DayShow from '../components/DayShow';
+import DayShow from '../components/DayShow';
 import DaysList from '../components/DaysList';
 
 import PieceForm from '../components/PieceForm';
 import PiecesList from '../components/PiecesList';
-
-const DayShow = lazy(() => import('../components/DayShow'));
-// import { render } from '@testing-library/react';
-
 class DisplayContainer extends Component {
 
     componentDidMount() {
@@ -59,7 +55,6 @@ class DisplayContainer extends Component {
                       </li> */}
                   </ul>
               </nav>
-            <Suspense fallback={<div>Loading...</div>}>
                 <Switch>
                     <Route exact path='/' component={Welcome} />
                     <Route path='/days/:id' render={(routerProps) => {
@@ -69,10 +64,8 @@ class DisplayContainer extends Component {
                     <Route path='/days/:dayId/pieces/:pieceId' render={()=> console.log("hitting the nested route")}/>
                     <Route path='/days/:dayId/pieces/new' render={routerProps => {
                         return <PieceForm {...routerProps} day={this.props.days} />}} />
-                    <Route path='/pieces' component={PiecesList} />
+                    {/* <Route path='/pieces' component={PiecesListNew} /> */}
                </Switch>
-            </Suspense>
-               
             </div>  
             )
         }
@@ -80,7 +73,6 @@ class DisplayContainer extends Component {
 }
 
 const mapStateToProps = state => {
-    console.log(state)
     return {
         days: state.days
     }

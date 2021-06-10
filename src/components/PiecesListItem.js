@@ -3,7 +3,9 @@ import React from 'react';
 const PieceListItem = (props) => {
     let piece = props.piece
     // console.log(props.piece)
-      
+    // const handleDelete = piece => {
+    //   props.deletePiece(piece.id, piece.dayId)
+    // }
         return (  
           <div>
             {/* hello from PieceListItem */}
@@ -12,6 +14,7 @@ const PieceListItem = (props) => {
                 <ul>Voicing: { piece?.voicing }</ul> 
                 <ul>Publisher: { piece?.publisher } </ul> 
                 <ul>Collection: { piece?.collection }</ul> 
+                {/* <li key={piece?.id}><button onClick={() => handleDelete(piece)}>Delete</button></li> */}
             </div>
           </div>
         );

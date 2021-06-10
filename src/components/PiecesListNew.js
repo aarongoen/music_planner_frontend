@@ -5,9 +5,13 @@
 // import Day from './Day'
 import { Link } from 'react-router-dom';
 import PiecesListItem from './PiecesListItem';
+import { connect } from 'react-redux'
+import PiecesList from './PiecesList';
+// import { deletePiece } from '.redux/actions/dayActions'
 
 const PiecesListNew = (props) => {
 // debugger
+
     return(   
     <>
         <div>   
@@ -26,7 +30,7 @@ const PiecesListNew = (props) => {
 }
 
 export default PiecesListNew;
-
+// export default connect(null, { deletePiece })(PiecesListNew);
 
             // return (
             // <div>  

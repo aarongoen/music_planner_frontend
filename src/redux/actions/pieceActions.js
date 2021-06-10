@@ -45,10 +45,10 @@ export const createPiece = (piece, day_id) => {
 
     export const deletePiece = (dayId, pieceId) => {
         return (dispatch) => {
-            fetch(`http://localhost:3000/api/v1/movies/${dayId}/reviews/${pieceId}`, {
+            fetch(`http://localhost:3000/days/${dayId}/pieces/${pieceId}`, {
                method: 'DELETE',
            })
            .then(res => res.json())
-           .then(data => dispatch({type: 'DELETE_PIECE', payload: data}))
+           .then(piece => dispatch({type: 'DELETE_PIECE', payload: piece}))
         }
     }

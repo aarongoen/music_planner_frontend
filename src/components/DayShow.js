@@ -16,9 +16,8 @@ console.log(days)
 
 let day = days[props.match.params.id]
 // let {day} = props
-console.log(day)
+// console.log(day)
 let pieces = days[props.match.params.id].pieces
-
 // let pieces = day?.pieces
 // console.log(pieces) 
 
@@ -31,13 +30,13 @@ let pieces = days[props.match.params.id].pieces
         <div className="DayShow">
         {/* <p>hello from dayshow</p> */}
 
-            {/* <> */}
+            <>
                 <DayDetails day={day}/>
                 <Suspense fallback={<div>Loading pieces...</div>} >
                     <PiecesListNew pieces={pieces} dayId={dayId}/>
                 </Suspense>
-                <PieceForm pieces={pieces} day={day} />
-            {/* </>  */}
+                <PieceForm day={day}/>
+            </> 
         </div>
     )
 

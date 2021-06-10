@@ -12,13 +12,16 @@ const reduceDay = (state = {days: []}, action) => {
             oldDay.pieces = newPieceArray
             return {...state, days: [...filteredDays, oldDay.pieces]}
         }
-        case "DELETE_PIECE": {
-            let oldDay = state.find(day => day.id === action.payload.day.day_id)
-            let filteredDays = state.filter(day => day !== oldDay)
-            let newPieceArray = oldDay.pieces.concat(action.payload)
-            oldDay.pieces = newPieceArray
-            return {...state, days: [...filteredDays, oldDay.pieces]}
-        }
+        // case "DELETE_PIECE": {
+        //     let daysLeft = state.days.map(movie => {
+        //         if (day.id === action.payload.id) {
+        //             return action.payload
+        //         } else {
+        //             return day
+        //         }
+        //     })
+        //     return {...state, days: daysLeft}
+        // }
         default:
             return state;
     }
