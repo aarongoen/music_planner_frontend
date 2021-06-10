@@ -48,7 +48,7 @@ onSubmit = e => {
 // this.props.createPiece(piece, day_id);
     this.props.createPiece(piece, piece.day_id);
 
-    this.setState({piece:''})
+    this.setState({piece: ""});
     // this.props.history.push(`/days/${day_id}`)
 
     

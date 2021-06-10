@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import PieceForm from './PieceForm';
-import PiecesListNew from './PiecesListNew';
+// import PiecesListNew from './PiecesListNew';
 // import PiecesList from './PiecesList';
 import {showDay} from '../redux/actions/dayActions';
 import { connect } from 'react-redux';
 import DayDetails from './DayDetails';
+
+const PiecesListNew = lazy(() => import('./PiecesListNew'))
 
 const DayShow = (props) => {
 console.log(props)
@@ -26,16 +28,16 @@ let pieces = days[props.match.params.id].pieces
 
     return ( 
 
-        <div>
-        <p>hello from dayshow</p>
+        <div className="DayShow">
+        {/* <p>hello from dayshow</p> */}
 
-        {  !pieces ? <div>Loading...</div> :
-            <>
+            {/* <> */}
                 <DayDetails day={day}/>
-                <PiecesListNew pieces={pieces} dayId={dayId}/>
+                <Suspense fallback={<div>Loading pieces...</div>} >
+                    <PiecesListNew pieces={pieces} dayId={dayId}/>
+                </Suspense>
                 <PieceForm pieces={pieces} day={day} />
-            </> 
-        }
+            {/* </>  */}
         </div>
     )
 

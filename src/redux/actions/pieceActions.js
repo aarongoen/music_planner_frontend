@@ -10,7 +10,7 @@ export const createPiece = (piece, day_id) => {
             body: JSON.stringify(piece)
             })
             .then((res) => {
-                console.log(res)
+                // console.log(res)
                 if (res.ok) {
                     return res.json();
                 } else {
@@ -18,7 +18,7 @@ export const createPiece = (piece, day_id) => {
                 }
             })
             .then(data => {
-                console.log(data)
+                // console.log(data)
                 dispatch({type: 'ADD_PIECE', payload: data})
             })
             .catch((err) => console.log(err))
@@ -42,3 +42,13 @@ export const createPiece = (piece, day_id) => {
                 );
         };
     };
+
+    export const deletePiece = (dayId, pieceId) => {
+        return (dispatch) => {
+            fetch(`http://localhost:3000/api/v1/movies/${dayId}/reviews/${pieceId}`, {
+               method: 'DELETE',
+           })
+           .then(res => res.json())
+           .then(data => dispatch({type: 'DELETE_PIECE', payload: data}))
+        }
+    }

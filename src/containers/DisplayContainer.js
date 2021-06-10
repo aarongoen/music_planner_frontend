@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Suspense, lazy } from 'react';
 // import React from 'react';
 import { Route, Switch, Link} from  'react-router-dom';
 import { connect } from 'react-redux';
@@ -8,12 +8,13 @@ import { getDays, showDay } from '../redux/actions/dayActions.js';
 import { createPiece, getPieces } from '../redux/actions/pieceActions.js';
 
 import Welcome from '../components/Welcome';
-import DayShow from '../components/DayShow';
+// import DayShow from '../components/DayShow';
 import DaysList from '../components/DaysList';
 
 import PieceForm from '../components/PieceForm';
 import PiecesList from '../components/PiecesList';
 
+const DayShow = lazy(() => import('../components/DayShow'));
 // import { render } from '@testing-library/react';
 
 class DisplayContainer extends Component {
@@ -58,8 +59,8 @@ class DisplayContainer extends Component {
                       </li> */}
                   </ul>
               </nav>
-
-               <Switch>
+            <Suspense fallback={<div>Loading...</div>}>
+                <Switch>
                     <Route exact path='/' component={Welcome} />
                     <Route path='/days/:id' render={(routerProps) => {
                         return <DayShow {...routerProps} days={this.props.days} pieces={this.props.pieces} />}}/>
@@ -70,6 +71,8 @@ class DisplayContainer extends Component {
                         return <PieceForm {...routerProps} day={this.props.days} />}} />
                     <Route path='/pieces' component={PiecesList} />
                </Switch>
+            </Suspense>
+               
             </div>  
             )
         }
