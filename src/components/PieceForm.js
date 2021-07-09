@@ -48,16 +48,13 @@ onSubmit = e => {
 // this.props.createPiece(piece, day_id);
     this.props.createPiece(piece, piece.day_id);
 
-    this.setState({piece: ""});
-    // this.props.history.push(`/days/${day_id}`)
-
-    
-    // console.log(props)
-    // this.title.value = "";
-    // this.composer.value = "";
-    // this.voicing.value = "";
-    // this.publisher.value = "";
-    // this.collection.value = "";
+    this.setState({
+        title: "",
+        composer: "",
+        voicing: "",
+        publisher: "",
+        collection: ""
+        });
 };
 
 render() {
@@ -84,7 +81,7 @@ render() {
                         type="text" 
                         name="composer" 
                         onChange={this.onChange}
-                        value={this.props.composer}
+                        value={this.state.composer}
                         // ref={(el) => (this.composer = el)}
  />
                         </p>
@@ -94,7 +91,7 @@ render() {
                         type="text" 
                         name="voicing"                        
                         onChange={this.onChange}
-                        value={this.props.voicing}
+                        value={this.state.voicing}
                         // ref={(el) => (this.voicing = el)}
  />
                         </p>
@@ -104,7 +101,7 @@ render() {
                         type="text" 
                         name="publisher" 
                         onChange={this.onChange}
-                        value={this.props.publisher}
+                        value={this.state.publisher}
                         // ref={(el) => (this.publisher = el)}
  />
                         </p>
@@ -114,7 +111,7 @@ render() {
                         type="text" 
                         name="collection" 
                         onChange={this.onChange}
-                        value={this.props.collection}
+                        value={this.state.collection}
                         // ref={(el) => (this.collection = el)}
                      />
                      </p>
