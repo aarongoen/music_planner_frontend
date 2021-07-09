@@ -15,15 +15,13 @@ render() {
 
     console.log(this.props.day)
     
-   if (!this.props.day && !this.props.loading) {
-       return <h1>There is no day for this id</h1>
-   }
+    if (!this.props.day && !this.props.loading) {
+        return <h1>There is no day for this id</h1>
+    }
 
     if (!this.props.day) {
         return <h5>"loading..."</h5>
-        }
-
-
+    }
 
     return (
         <div className="DayShowNew">

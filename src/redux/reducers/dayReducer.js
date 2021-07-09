@@ -8,13 +8,14 @@ const reduceDay = (state = {days: [], loading: true}, action) => {
         case "ADD_PIECE": {
             // debugger
             let oldDay = state.days.find(day => day.id === action.payload.day.day_id)
-            debugger
-            let filteredDays = state.filter(day => day !== oldDay)
-            let newPieceArray = oldDay.pieces.concat(action.payload)
-            oldDay.pieces = newPieceArray
             // debugger
-            // return state
-            return {...state, days: [...filteredDays]}
+            let filteredDays = state.days.filter(day => day !== oldDay)
+            let newPieceArray = oldDay.pieces.concat(action.payload)
+            // oldDay.pieces = newPieceArray
+            const newDay = {...oldDay, pieces: newPieceArray}
+            // debugger
+            // return {...state, days: [...filteredDays]}
+            return {...state, days: filteredDays.concat(newDay)}
         }
         // case "DELETE_PIECE": {
         //     let daysLeft = state.days.map(movie => {
