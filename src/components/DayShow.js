@@ -1,12 +1,12 @@
 import React, { lazy, Suspense } from 'react';
 import PieceForm from './PieceForm';
-// import PiecesListNew from './PiecesListNew';
+import PiecesListNew from './PiecesListNew';
 // import PiecesList from './PiecesList';
 import {showDay} from '../redux/actions/dayActions';
 import { connect } from 'react-redux';
 import DayDetails from './DayDetails';
 
-const PiecesListNew = lazy(() => import('./PiecesListNew'))
+// const PiecesListNew = lazy(() => import('./PiecesListNew'))
 
 const DayShow = (props) => {
 console.log(props)
@@ -20,7 +20,6 @@ let day = days[props.match.params.id]
 let pieces = days[props.match.params.id].pieces
 // let pieces = day?.pieces
 // console.log(pieces) 
-
 
 
     let dayId = day?.id-1

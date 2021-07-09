@@ -10,7 +10,6 @@ export const createPiece = (piece, day_id) => {
             body: JSON.stringify(piece)
             })
             .then((res) => {
-                // console.log(res)
                 if (res.ok) {
                     return res.json();
                 } else {

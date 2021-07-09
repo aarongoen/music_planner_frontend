@@ -8,9 +8,10 @@ export const getDays = () => {
     };
 };
 
-export const showDay = (dayID) => {
+export const showDay = (dayId) => {
+    debugger
     return dispatch => {
-        fetch(`http://localhost:3000/days/${dayID}`)
+        fetch(`http://localhost:3000/days/${dayId}`)
         .then(res => res.json())
         .then((data) => dispatch({type: 'SHOW_DAY_SUCCESS', payload: data})
             );

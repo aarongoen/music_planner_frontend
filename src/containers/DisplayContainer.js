@@ -3,12 +3,12 @@ import React, { Component } from 'react';
 import { Route, Switch, Link} from  'react-router-dom';
 import { connect } from 'react-redux';
 
-
 import { getDays, showDay } from '../redux/actions/dayActions.js';
 import { createPiece, getPieces } from '../redux/actions/pieceActions.js';
 
 import Welcome from '../components/Welcome';
-import DayShow from '../components/DayShow';
+// import DayShow from '../components/DayShow';
+import DayShowNew from '../components/DayShowNew';
 import DaysList from '../components/DaysList';
 
 import PieceForm from '../components/PieceForm';
@@ -20,21 +20,13 @@ class DisplayContainer extends Component {
         // this.props.getPieces()
       }
 
-    // renderPiece = (routerProps) => {
-    //     console.log(routerProps)
+    // renderDay = (routerProps) => {
+    //     // console.log(routerProps)
 
     //     const dayId = parseInt(routerProps.match.params.id)
-    //     console.log(dayId)
+    //     // console.log(dayId)
 
-    //     let { days } = this.props
-    //     console.log(days)
-
-    //     let day = this.props.days.find (day => day.id === dayId)
-    //     console.log(day)
-
-    //     console.log(this.props)
-
-    //     return <PieceShow {...routerProps} days={days} pieces={this.props.pieces} dayId={dayId} />
+    //     return <DayShowNew {...routerProps} dayId={dayId} />
     // }
 
         render() {
@@ -50,15 +42,14 @@ class DisplayContainer extends Component {
                       <li>
                           <Link to="/days">Days</Link>
                       </li>
-                      {/* <li>
-                          <Link to="/users">Users</Link>
-                      </li> */}
                   </ul>
               </nav>
                 <Switch>
                     <Route exact path='/' component={Welcome} />
-                    <Route path='/days/:id' render={(routerProps) => {
-                        return <DayShow {...routerProps} days={this.props.days} pieces={this.props.pieces} />}}/>
+                    <Route path='/days/:id' component={DayShowNew} />
+                     {/* render={(routerProps) => { */}
+                        {/* // return <DayShow {...routerProps} days={this.props.days} pieces={this.props.pieces} />}}/>
+                        // return <DayShowNew {...routerProps} days={this.props.days} pieces={this.props.pieces} />}}/> */}
                     <Route exact path='/days' render = {(routerProps) => {
                         return <DaysList {...routerProps} days={this.props.days} />}} />
                     <Route path='/days/:dayId/pieces/:pieceId' render={()=> console.log("hitting the nested route")}/>

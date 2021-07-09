@@ -9,18 +9,18 @@ import { connect } from 'react-redux'
 import PiecesList from './PiecesList';
 // import { deletePiece } from '.redux/actions/dayActions'
 
-const PiecesListNew = (props) => {
+const PiecesListNew = (pieces, dayId) => {
 // debugger
+    if (pieces.length === 0) {
+        return <h5>loading...</h5>
+    }
 
     return(   
     <>
         <div>   
         <h4>Recommended pieces:</h4>
-        {/* {console.log(pieces)} */}
-        {/* {console.log(props)} */}
             <ul>  
-              {props.pieces.length > 0 && 
-                props.pieces.map(piece => {
+                {pieces.pieces.map(piece => {
                     return <PiecesListItem key={piece.id} piece={piece}/>})
                 }
             </ul>

@@ -42,7 +42,7 @@ onSubmit = e => {
             day_id: this.props.day.id
         }
 
-    console.log('this is the piece', piece)
+    // console.log('this is the piece', piece)
 // console.log(this.state)
 
 // this.props.createPiece(piece, day_id);

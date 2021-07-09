@@ -1,7 +1,7 @@
 import {createStore, combineReducers, compose, applyMiddleware} from 'redux';
 import pieces from './reducers/pieceReducer';
-import thunk from 'redux-thunk';
 import days from './reducers/dayReducer';
+import thunk from 'redux-thunk';
 
 const rootReducer = combineReducers({
     pieces,
