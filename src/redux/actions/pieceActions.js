@@ -24,30 +24,30 @@ export const createPiece = (piece, day_id) => {
         }
     }
     
-    export const getPieces = () => {
-        return dispatch => {
-            fetch('http://localhost:3000/pieces')
-            .then(res => res.json())
-            .then((data) => dispatch({type: 'FETCH_PIECES_SUCCESS', payload: data})
-                );
-        };
-    };
+    // export const getPieces = () => {
+    //     return dispatch => {
+    //         fetch('http://localhost:3000/pieces')
+    //         .then(res => res.json())
+    //         .then((data) => dispatch({type: 'FETCH_PIECES_SUCCESS', payload: data})
+    //             );
+    //     };
+    // };
     
-    export const getPiece = (dayId, pieceId) => {
-        return dispatch => {
-            fetch(`http://localhost:3000/days/${dayId}/pieces/${pieceId}`)
-                .then(res => res.json())
-                .then((data) => dispatch({type: 'SHOW_PIECE_SUCCESS', payload: data})
-                );
-        };
-    };
+    // export const getPiece = (dayId, pieceId) => {
+    //     return dispatch => {
+    //         fetch(`http://localhost:3000/days/${dayId}/pieces/${pieceId}`)
+    //             .then(res => res.json())
+    //             .then((data) => dispatch({type: 'SHOW_PIECE_SUCCESS', payload: data})
+    //             );
+    //     };
+    // };
 
-    export const deletePiece = (dayId, pieceId) => {
-        return (dispatch) => {
-            fetch(`http://localhost:3000/days/${dayId}/pieces/${pieceId}`, {
-               method: 'DELETE',
-           })
-           .then(res => res.json())
-           .then(piece => dispatch({type: 'DELETE_PIECE', payload: piece}))
-        }
-    }
+    // export const deletePiece = (dayId, pieceId) => {
+    //     return (dispatch) => {
+    //         fetch(`http://localhost:3000/days/${dayId}/pieces/${pieceId}`, {
+    //            method: 'DELETE',
+    //        })
+    //        .then(res => res.json())
+    //        .then(piece => dispatch({type: 'DELETE_PIECE', payload: piece}))
+    //     }
+    // }

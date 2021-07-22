@@ -1,12 +1,6 @@
-// import React, {PureComponent} from 'react';
-// import React, { Component } from 'react'
-// import { getDays } from '../redux/actions/dayActions'
-// import { connect } from 'react-redux'
-// import Day from './Day'
 import { Link } from 'react-router-dom';
 import PiecesListItem from './PiecesListItem';
 import { connect } from 'react-redux'
-import PiecesList from './PiecesList';
 // import { deletePiece } from '.redux/actions/dayActions'
 
 const PiecesListNew = (pieces, dayId) => {

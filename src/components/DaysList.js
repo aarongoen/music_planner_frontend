@@ -1,8 +1,4 @@
 import React from 'react';
-// import React, { Component } from 'react'
-// import { getDays } from '../redux/actions/dayActions'
-// import { connect } from 'react-redux'
-// import Day from './Day'
 import { Link } from 'react-router-dom';
 
 
@@ -19,15 +15,5 @@ const DaysList = ( props ) => {
             </div>
         );   
 }
-
-// const mapStateToProps = state => {
-//     console.log(state)
-//     return {
-//         days: state.days
-//     }
-// }
-
-
-// export default connect(mapStateToProps, { getDays })(DaysList)
 
 export default DaysList;

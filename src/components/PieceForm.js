@@ -1,12 +1,7 @@
 import React, { Component } from 'react'
 import { createPiece } from '../redux/actions/pieceActions'
-// import { createPiece } from '../redux/actions/dayActions'
 import { connect } from 'react-redux'
-// import { withRouter } from 'react-router-dom';
-// import { useSelector } from 'react-redux';
 class PieceForm extends Component {
-// const { pieceId } = match.params
-
     state = {
             title: '',
             composer: '',
@@ -18,20 +13,16 @@ class PieceForm extends Component {
 
 componentDidMount() {
     const {title, composer, voicing, publisher, collection, day_id} = this.props
-    // console.log(this.props)
+    
     this.setState({title, composer, voicing, publisher, collection, day_id})
-    // console.log(this.state)
 }
         
 onChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
-    // console.log(this.state)
 };
 
 onSubmit = e => {
     e.preventDefault()
-    // console.log('props', this.props)
-    // console.log('history', this.props.history)
     
     const piece = {
             title: this.state.title,
@@ -42,10 +33,6 @@ onSubmit = e => {
             day_id: this.props.day.id
         }
 
-    // console.log('this is the piece', piece)
-// console.log(this.state)
-
-// this.props.createPiece(piece, day_id);
     this.props.createPiece(piece, piece.day_id);
 
     this.setState({
@@ -68,7 +55,6 @@ render() {
                         name="title"
                         onChange={this.onChange}
                         value={this.state.title} 
-                        // ref={(el) => (this.title = el)}
                     /> </p>
 
                     <div>  
@@ -82,8 +68,7 @@ render() {
                         name="composer" 
                         onChange={this.onChange}
                         value={this.state.composer}
-                        // ref={(el) => (this.composer = el)}
- />
+                    />
                         </p>
                     
                     <p><label> Voicing: </label>
@@ -92,8 +77,7 @@ render() {
                         name="voicing"                        
                         onChange={this.onChange}
                         value={this.state.voicing}
-                        // ref={(el) => (this.voicing = el)}
- />
+                    />
                         </p>
                         
                     <p><label> Publisher: </label>
@@ -102,8 +86,7 @@ render() {
                         name="publisher" 
                         onChange={this.onChange}
                         value={this.state.publisher}
-                        // ref={(el) => (this.publisher = el)}
- />
+                    />
                         </p>
                         
                     <p><label> Collection: </label>
@@ -114,6 +97,7 @@ render() {
                         value={this.state.collection}
                         // ref={(el) => (this.collection = el)}
                      />
+
                      </p>
                      <button onClick={this.onSubmit} type="submit"> Add </button>
                 </form>
@@ -122,5 +106,4 @@ render() {
     }
 }
 
-// export default PieceForm;
 export default connect(null, { createPiece })(PieceForm);
