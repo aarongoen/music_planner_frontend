@@ -5,6 +5,11 @@ import { connect } from 'react-redux'
 
 const PiecesListNew = (pieces, dayId) => {
 // debugger
+const handleDelete = () => {
+    alert("Button clicked!");
+    // props.deletePiece(piece.id, piece.dayId)
+  }
+
     if (pieces.length === 0) {
         return <h5>loading...</h5>
     }
@@ -15,7 +20,7 @@ const PiecesListNew = (pieces, dayId) => {
         <h4>Recommended pieces:</h4>
             <ul>  
                 {pieces.pieces.map(piece => {
-                    return <PiecesListItem key={piece.id} piece={piece}/>})
+                    return <PiecesListItem key={piece.id} piece={piece} onDelete={handleDelete}/>})
                 }
             </ul>
         </div>

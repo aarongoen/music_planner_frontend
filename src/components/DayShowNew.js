@@ -4,6 +4,9 @@ import PiecesListNew from './PiecesListNew';
 import { showDay } from '../redux/actions/dayActions';
 import { connect } from 'react-redux';
 import DayDetails from './DayDetails'; 
+
+import WordCounter from '../components/WordCounter.js';
+
 class DayShowNew extends Component {
 
 render() {
@@ -19,6 +22,8 @@ render() {
                 <DayDetails day={this.props.day}/> 
                 <PiecesListNew pieces={this.props.day.pieces} dayId={this.props.day.id}/>
                 <PieceForm day={this.props.day}/> 
+                <WordCounter />
+
             </> 
         </div>
     )
